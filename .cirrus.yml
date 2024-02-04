@@ -1,0 +1,12 @@
+freebsd_instance:
+  image_family: freebsd-14-0
+
+task:
+  name: "Build"
+  install_script: >
+      pkg install -y cmake ninja git-lite gettext pkgconf graphics/gd
+  script: |
+      mkdir build
+      cd build
+      cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Debug
+      ninja
